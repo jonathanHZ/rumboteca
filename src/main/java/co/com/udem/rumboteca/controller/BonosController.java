@@ -1,8 +1,6 @@
 package co.com.udem.rumboteca.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import co.com.udem.rumboteca.model.EventDTO;
 import co.com.udem.rumboteca.model.PageDataDTO;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterface;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterfaceImpl;
@@ -23,7 +20,7 @@ public class BonosController {
 	PageDataInterface pageDataService = new PageDataInterfaceImpl();
 
 	@RequestMapping("/list")
-	public ModelAndView MoviesList() throws JsonGenerationException,
+	public ModelAndView List() throws JsonGenerationException,
 			JsonMappingException, IOException {
 		ModelAndView modelAndView = new ModelAndView();
 		PageDataDTO pageDataDTO = pageDataService.getPageDataDTO();
@@ -32,4 +29,5 @@ public class BonosController {
 		System.out.println(mapper.writeValueAsString(modelAndView));
 		return modelAndView;
 	}
+		
 }

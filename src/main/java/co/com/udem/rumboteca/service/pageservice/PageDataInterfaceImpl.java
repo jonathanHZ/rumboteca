@@ -1,14 +1,10 @@
 package co.com.udem.rumboteca.service.pageservice;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-
 import co.com.udem.rumboteca.model.AdvertisementDTO;
+import co.com.udem.rumboteca.model.CountryDTO;
 import co.com.udem.rumboteca.model.EventDTO;
 import co.com.udem.rumboteca.model.PageDataDTO;
 import co.com.udem.rumboteca.model.PlaceDTO;
@@ -28,6 +24,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		pageDataDTO.setPlaceDTOList(getPlaceDTOList());
 		pageDataDTO.setWallDTOList(getWallDTOList());
 		pageDataDTO.setWalletDTOList(getWalletDTOList());
+		pageDataDTO.setCountryDTOList(getContryDTOPage());
 		return pageDataDTO;
 	}
 
@@ -39,6 +36,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		pageDataDTO.setPlaceDTOList(getPlaceDTOList());
 		pageDataDTO.setWallDTOList(getWallDTOPage(page));
 		pageDataDTO.setWalletDTOList(getWalletDTOList());
+		pageDataDTO.setCountryDTOList(getContryDTOPage());
 		return pageDataDTO;
 	}
 
@@ -60,7 +58,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 	}
 
 	private List<PlaceDTO> getPlaceDTOList() {
-		return rumbotecaFacade.getLocationByCity(1);
+		return rumbotecaFacade.getLocationTopTen();
 	}
 
 	private List<WallDTO> getWallDTOList() {
@@ -71,13 +69,6 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		return null;
 	}
 
-	/**
-	 * Return wallDTO for paging
-	 * 
-	 * @param page
-	 *            page number
-	 * @return
-	 */
 	private List<WallDTO> getWallDTOPage(int page) {
 		List<WallDTO> wallDTOList = new ArrayList<WallDTO>();
 
@@ -147,6 +138,10 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		}
 
 		return wallDTOList;
+	}
+	
+	private List<CountryDTO> getContryDTOPage(){
+		return rumbotecaFacade.getCountries();
 	}
 
 }

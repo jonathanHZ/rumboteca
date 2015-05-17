@@ -40,6 +40,10 @@
 		document.wallpagefrm.wallPaging.value = page;
 		document.wallpagefrm.submit();		
 	}
+	
+	function alertas() {
+		alert("Entre en alert");
+	}
   </script>
 
 </head>
@@ -80,9 +84,9 @@
 					</form>
 				</div>
 			</nav>
-			<div class="carousel slide" id="carousel-831421" style="height: 645px">
+			<div class="carousel slide" id="carousel-831421" style="height: 550px">
 				
-				<div class="carousel-inner" style="height: 645px">
+				<div class="carousel-inner" style="height: 550px">
 					<c:if test="${not empty pageDataDTOList.advertisementDTOList}">
 					  	<c:set var="count" value="1"/>
 					  	<c:forEach items="${pageDataDTOList.advertisementDTOList}" var="advertisementDTO">
@@ -95,7 +99,7 @@
 							</c:if>
 							<c:set var="count" value="2"/>						
 								<img alt="300x200" src=<c:out value="${advertisementDTO.photo}"/>>
-								<div class="carousel-caption">
+								<div class="carousel-caption col-md-offset-6 col-md-3 " style="top: 0;">
 									<h4>
 										<c:out value="${advertisementDTO.tittle}"/>
 									</h4>
@@ -118,15 +122,15 @@
 					Events <small>Eventos</small>
 				</h1>
 			</div>
-			<div class="row clearfix" style="height: 1080px; overflow: auto ">
+			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<div class="tabbable" id="tabs-440834">
 						<ul class="nav nav-tabs">
 							<li class="active">
-								<a href="#panel-287381" data-toggle="tab">Todos Los Eventos</a>
+								<a href="#panel-287381" data-toggle="tab">Top Then</a>
 							</li>
 							<li>
-								<a href="#panel-380294" data-toggle="tab">Eventos Por Ciudad</a>
+								<a href="#panel-380294" data-toggle="tab">Eventos Por Pais</a>
 							</li>
 						</ul>
 						<div class="tab-content">
@@ -138,15 +142,15 @@
 											<div class="thumbnail" style="height: 450px">
 												<img alt="300x200" style="height: 195px" src=<c:out value="${eventDTO.photo}"/>>
 												<div class="caption">
-													<h3>
+													<h3 class="text-center">
 														<c:out value="${eventDTO.tittle}"/>
 													</h3>
-													<p style="height: 100px">
+													<p class="text-center" style="height: 100px">
 														<c:out value="${eventDTO.description}"/>
 													</p>
 													<p>
 													<a id="modal-225779" href="#modal<c:out value="${eventDTO.id}"/>" role="button" class="btn btn-primary" data-toggle="modal">Ver Información</a>
-													<a id="modal-225779" href="#modalC<c:out value="${eventDTO.id}"/>" role="button" class="btn btn-primary" data-toggle="modal">Ver Comentarios</a>
+													<a id="modal-225779" href="#modalC<c:out value="${eventDTO.id}"/>" role="button" class="btn btn-primary pull-right" data-toggle="modal">Ver Comentarios</a>
 													</p>
 												</div>
 											</div>
@@ -202,9 +206,11 @@
 								</div>
 							</div>
 							<div class="tab-pane" id="panel-380294">
-								<p>
-									Howdy, I'm in Section 2.
-								</p>
+								<ul class="list-group col-md-2 text-center">
+								  <li class="list-group-item" onclick="alertas()">First item</li>
+								  <li class="list-group-item">Second item</li>
+								  <li class="list-group-item">Third item</li>
+								</ul>
 							</div>
 						</div>
 					</div>
