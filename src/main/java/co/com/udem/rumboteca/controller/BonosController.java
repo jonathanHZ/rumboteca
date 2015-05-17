@@ -15,20 +15,19 @@ import co.com.udem.rumboteca.model.PageDataDTO;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterface;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterfaceImpl;
 
-
-
 @Controller
 @RequestMapping("/bonos")
 public class BonosController {
-	
+
 	ObjectMapper mapper = new ObjectMapper();
 	PageDataInterface pageDataService = new PageDataInterfaceImpl();
-	
+
 	@RequestMapping("/list")
-	public ModelAndView MoviesList() throws JsonGenerationException, JsonMappingException, IOException{
+	public ModelAndView MoviesList() throws JsonGenerationException,
+			JsonMappingException, IOException {
 		ModelAndView modelAndView = new ModelAndView();
-	    PageDataDTO pageDataDTO = pageDataService.getPageDataDTO();
-	    
+		PageDataDTO pageDataDTO = pageDataService.getPageDataDTO();
+
 		modelAndView.addObject("pageDataDTOList", pageDataDTO);
 		System.out.println(mapper.writeValueAsString(modelAndView));
 		return modelAndView;
