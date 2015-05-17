@@ -57,7 +57,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
   }
 
   private List<EventDTO> getEventDTOList(){
-   	return rumbotecaFacade.getEventByCity(1);
+   	return rumbotecaFacade.getEventTopTen();
   }
 
   private List<PlaceDTO> getPlaceDTOList() {
