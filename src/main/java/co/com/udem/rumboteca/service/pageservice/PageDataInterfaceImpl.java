@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.com.udem.rumboteca.model.AdvertisementDTO;
+import co.com.udem.rumboteca.model.ComboDTO;
 import co.com.udem.rumboteca.model.CountryDTO;
 import co.com.udem.rumboteca.model.EventDTO;
 import co.com.udem.rumboteca.model.PageDataDTO;
@@ -23,7 +24,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		pageDataDTO.setEventDTOList(getEventDTOList());
 		pageDataDTO.setPlaceDTOList(getPlaceDTOList());
 		pageDataDTO.setWallDTOList(getWallDTOList());
-		pageDataDTO.setWalletDTOList(getWalletDTOList());
+		pageDataDTO.setComboDTOList(getComboDTOList());
 		pageDataDTO.setCountryDTOList(getContryDTOPage());
 		return pageDataDTO;
 	}
@@ -35,7 +36,7 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		pageDataDTO.setEventDTOList(getEventDTOList());
 		pageDataDTO.setPlaceDTOList(getPlaceDTOList());
 		pageDataDTO.setWallDTOList(getWallDTOPage(page));
-		pageDataDTO.setWalletDTOList(getWalletDTOList());
+		pageDataDTO.setComboDTOList(getComboDTOList());
 		pageDataDTO.setCountryDTOList(getContryDTOPage());
 		return pageDataDTO;
 	}
@@ -65,8 +66,8 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 		return getWallDTOPage(1);
 	}
 
-	private List<WalletDTO> getWalletDTOList() {
-		return null;
+	private List<ComboDTO> getComboDTOList() {
+		return rumbotecaFacade.getCombos();
 	}
 
 	private List<WallDTO> getWallDTOPage(int page) {

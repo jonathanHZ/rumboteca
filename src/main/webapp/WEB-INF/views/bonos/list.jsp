@@ -206,11 +206,18 @@
 								</div>
 							</div>
 							<div class="tab-pane" id="panel-380294">
-								<ul class="list-group col-md-2 text-center">
-								  <li class="list-group-item" onclick="alertas()">First item</li>
-								  <li class="list-group-item">Second item</li>
-								  <li class="list-group-item">Third item</li>
-								</ul>
+								<div class="row clearfix">
+									<div class="col-md-2 text-center">
+										<ul class="list-group">
+											<c:forEach  items="${pageDataDTOList.countryDTOList}" var="countryDTO">
+												<li class="list-group-item btn" id="${countryDTO.id}">
+													<c:out value="${countryDTO.name}">
+													</c:out>
+												</li>
+											</c:forEach>
+										</ul>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -241,12 +248,12 @@
 									<c:out value="${placeDTO.description}"/>
 								</p>
 								<p>
-								<a id="modal-225779" href="#modal<c:out value="${placeDTO.id}"/>" role="button" class="btn btn-primary" data-toggle="modal">Ver</a>
+								<a id="modal-225779" href="#modalPlace<c:out value="${placeDTO.id}"/>" role="button" class="btn btn-primary" data-toggle="modal">Ver</a>
 								</p>
 							</div>
 						</div>
 					</div>				
-					<div class="modal fade" id="modal<c:out value="${placeDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="modalPlace<c:out value="${placeDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -388,70 +395,24 @@
 											Combo
 										</th>
 										<th>
-											Descripci√≥n
-										</th>
-										<th>
 											Precio
 										</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="active">
-										<td>
-											1
-										</td>
-										<td>
-											Enfarrados
-										</td>
-										<td>
-											Botella Aguardiente - 4 Sodas 
-										</td>
-										<td>
-											$100.000
-										</td>
-									</tr>
-									<tr class="success">
-										<td>
-											2
-										</td>
-										<td>
-											Mexicano
-										</td>
-										<td>
-											Botella Tequila - Limones - Sal
-										</td>
-										<td>
-											$120.000
-										</td>
-									</tr>
-									<tr class="warning">
-										<td>
-											3
-										</td>
-										<td>
-											Ruso
-										</td>
-										<td>
-											Vodka - Jugo Naranja
-										</td>
-										<td>
-											$130.000
-										</td>
-									</tr>
-									<tr class="danger">
-										<td>
-											4
-										</td>
-										<td>
-											Irlandes
-										</td>
-										<td>
-											Whisky
-										</td>
-										<td>
-											$140.000
-										</td>
-									</tr>
+									<c:forEach items="${pageDataDTOList.comboDTOList}" var="comboDTO">
+										<tr class="success">
+											<td>
+												<c:out value="${comboDTO.id}"></c:out>
+											</td>
+											<td>
+												<c:out value="${comboDTO.name}"></c:out>
+											</td>
+											<td>
+												<c:out value="${comboDTO.price}"></c:out>
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>							
 						</p>
@@ -468,7 +429,7 @@
 											Combo
 										</th>
 										<th>
-											Descripci√≥n
+											DescripciÛn
 										</th>
 										<th>
 											Precio
@@ -484,7 +445,7 @@
 											Enfarrados
 										</td>
 										<td>
-											10 Empanadas antioque√±as - Picada
+											10 Empanadas antioqueÒas - Picada
 										</td>
 										<td>
 											$50.000
