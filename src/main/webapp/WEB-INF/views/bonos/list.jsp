@@ -385,7 +385,7 @@
 				<div class="tab-content">
 					<div class="tab-pane" id="panel-192836">
 						<p>
-							<table class="table table-hover table-condensed">
+							<table class="table table-hover table-condensed table-striped">
 								<thead>
 									<tr>
 										<th>
@@ -401,7 +401,7 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${pageDataDTOList.comboDTOList}" var="comboDTO">
-										<tr class="success">
+										<tr>
 											<td>
 												<c:out value="${comboDTO.id}"></c:out>
 											</td>
