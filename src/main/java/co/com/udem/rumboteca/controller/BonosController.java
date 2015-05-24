@@ -1,6 +1,7 @@
 package co.com.udem.rumboteca.controller;
 
 import java.io.IOException;
+
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.com.udem.rumboteca.model.PageDataDTO;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterface;
 import co.com.udem.rumboteca.service.pageservice.PageDataInterfaceImpl;
+import co.com.udem.rumboteca.service.restclient.RestfulRumbotecaWSClient;
 
 @Controller
 @RequestMapping("/bonos")
@@ -22,6 +24,8 @@ public class BonosController {
 	@RequestMapping("/list")
 	public ModelAndView List() throws JsonGenerationException,
 			JsonMappingException, IOException {
+		RestfulRumbotecaWSClient rumbotecaWSClient = new RestfulRumbotecaWSClient();
+		rumbotecaWSClient.getEventTop();
 		ModelAndView modelAndView = new ModelAndView();
 		PageDataDTO pageDataDTO = pageDataService.getPageDataDTO();
 

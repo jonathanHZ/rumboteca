@@ -12,10 +12,12 @@ import co.com.udem.rumboteca.model.PlaceDTO;
 import co.com.udem.rumboteca.model.WallDTO;
 import co.com.udem.rumboteca.model.WalletDTO;
 import co.com.udem.rumboteca.service.RumbotecaFacade;
+import co.com.udem.rumboteca.service.restclient.RestfulRumbotecaWSClient;
 
 public class PageDataInterfaceImpl implements PageDataInterface {
 
 	RumbotecaFacade rumbotecaFacade = new RumbotecaFacade();
+	RestfulRumbotecaWSClient restfulRumbotecaWSClient = new RestfulRumbotecaWSClient();
 
 	public PageDataDTO getPageDataDTO() {
 		// TODO MOCKS
@@ -55,11 +57,13 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 	}
 
 	private List<EventDTO> getEventDTOList() {
-		return rumbotecaFacade.getEventTopTen();
+//		return rumbotecaFacade.getEventTopTen();
+		return restfulRumbotecaWSClient.getEventTop();
 	}
 
 	private List<PlaceDTO> getPlaceDTOList() {
-		return rumbotecaFacade.getLocationTopTen();
+//		return rumbotecaFacade.getLocationTopTen();
+		return restfulRumbotecaWSClient.getPlaceDTOTop();
 	}
 
 	private List<WallDTO> getWallDTOList() {
@@ -67,7 +71,8 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 	}
 
 	private List<ComboDTO> getComboDTOList() {
-		return rumbotecaFacade.getCombos();
+//		return rumbotecaFacade.getCombos();
+		return restfulRumbotecaWSClient.getCombos();
 	}
 
 	private List<WallDTO> getWallDTOPage(int page) {
