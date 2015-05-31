@@ -1,0 +1,28 @@
+body{
+	background-image: url("../images/bg.jpg");
+}
+.barra-superior{
+  color: #FFFFFF;
+  cursor: default;
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+}
+.sobre-elemento:HOVER{
+  color: #555;
+  cursor: default;
+  background-color: #EFEFFC;
+  border: 1px solid #ddd;
+  //border-bottom-color: transparent;
+}
+.tittle{
+	color: #FFF;
+}
+.sub-tittle{
+	color: #555;
+}
+.border-radius-15{
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.display-info

@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
+import co.com.udem.rumboteca.model.CityDTO;
 import co.com.udem.rumboteca.model.ComboDTO;
+import co.com.udem.rumboteca.model.CountryDTO;
 import co.com.udem.rumboteca.model.EventDTO;
 import co.com.udem.rumboteca.model.PlaceDTO;
+import co.com.udem.rumboteca.persistence.entity.Country;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -38,9 +41,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<EventDTO>>() {}.getType();
             List<EventDTO> eventDTOs = gson.fromJson(output, listType);
             
-            for (EventDTO eventDTO : eventDTOs) {
-				System.out.println(eventDTO.getTittle());
-			}
             return eventDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,9 +62,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<EventDTO>>() {}.getType();
             List<EventDTO> eventDTOs = gson.fromJson(output, listType);
             
-            for (EventDTO eventDTO : eventDTOs) {
-				System.out.println(eventDTO.getTittle());
-			}
             return eventDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,9 +107,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<EventDTO>>() {}.getType();
             List<EventDTO> eventDTOs = gson.fromJson(output, listType);
             
-            for (EventDTO eventDTO : eventDTOs) {
-				System.out.println(eventDTO.getTittle());
-			}
             return eventDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -134,9 +128,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<ComboDTO>>() {}.getType();
             List<ComboDTO> comboDTOs = gson.fromJson(output, listType);
             
-            for (ComboDTO comboDTO : comboDTOs) {
-				System.out.println(comboDTO.getName());
-			}
             return comboDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,9 +149,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<PlaceDTO>>() {}.getType();
             List<PlaceDTO> placeDTOs = gson.fromJson(output, listType);
             
-            for (PlaceDTO placeDTO : placeDTOs) {
-				System.out.println(placeDTO.getTittle());
-			}
             return placeDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -182,9 +170,6 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<PlaceDTO>>() {}.getType();
             List<PlaceDTO> placeDTOs = gson.fromJson(output, listType);
             
-            for (PlaceDTO placeDTO : placeDTOs) {
-				System.out.println(placeDTO.getTittle());
-			}
             return placeDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -205,10 +190,7 @@ public class RestfulRumbotecaWSClient {
             
             Type listType= new TypeToken<List<PlaceDTO>>() {}.getType();
             List<PlaceDTO> placeDTOs = gson.fromJson(output, listType);
-            
-            for (PlaceDTO placeDTO : placeDTOs) {
-				System.out.println(placeDTO.getTittle());
-			}
+                      
             return placeDTOs;
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,10 +212,49 @@ public class RestfulRumbotecaWSClient {
             Type listType= new TypeToken<List<PlaceDTO>>() {}.getType();
             List<PlaceDTO> placeDTOs = gson.fromJson(output, listType);
             
-            for (PlaceDTO placeDTO : placeDTOs) {
-				System.out.println(placeDTO.getTittle());
-			}
             return placeDTOs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return null;
+	}
+	
+	public List<CityDTO> getCityDTO(){
+		try {
+			String url = "http://localhost:8080/rumboteca_restful/rest/Api/getCity";
+            webResource = client.resource(url);
+            response = webResource.accept("application/json").get(ClientResponse.class);
+
+            if (response.getStatus() != 200)
+                throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+
+            String output = response.getEntity(String.class);
+            
+            Type listType= new TypeToken<List<CityDTO>>() {}.getType();
+            List<CityDTO> CityDTOs = gson.fromJson(output, listType);
+            
+            return CityDTOs;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return null;
+	}
+	
+	public List<CountryDTO> getCountryDTO(){
+		try {
+			String url = "http://localhost:8080/rumboteca_restful/rest/Api/getCountry";
+            webResource = client.resource(url);
+            response = webResource.accept("application/json").get(ClientResponse.class);
+
+            if (response.getStatus() != 200)
+                throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+
+            String output = response.getEntity(String.class);
+            
+            Type listType= new TypeToken<List<CountryDTO>>() {}.getType();
+            List<CountryDTO> CountryDTOs = gson.fromJson(output, listType);
+            
+            return CountryDTOs;
         } catch (Exception e) {
             e.printStackTrace();
         }

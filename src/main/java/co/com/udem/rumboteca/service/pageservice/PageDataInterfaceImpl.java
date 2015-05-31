@@ -147,7 +147,8 @@ public class PageDataInterfaceImpl implements PageDataInterface {
 	}
 	
 	private List<CountryDTO> getContryDTOPage(){
-		return rumbotecaFacade.getCountries();
+//		return rumbotecaFacade.getCountries();
+		return restfulRumbotecaWSClient.getCountryDTO();
 	}
 
 }
