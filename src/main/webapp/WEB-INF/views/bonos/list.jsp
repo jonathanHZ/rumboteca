@@ -55,7 +55,7 @@
 	     		<div role="tabpanel col-md-12">
 			      <!-- Nav tabs -->
 			      <ul class="nav nav-tabs navbar navbar-default barra-superior" role="tablist">
-			      	<a class="navbar-brand" href="#">
+			      	<a class="navbar-brand" href="#Eventos">
         				<img alt="Brand" src="../lib/resources/images/brand.png">
      				</a>
 			        <li role="presentation" class="active sobre-elemento"><a href="#Eventos" aria-controls="home" role="tab" data-toggle="tab"><h4>Eventos</h4></a></li>
@@ -75,60 +75,52 @@
 			              	<div class="col-md-12">
 			              	<c:forEach items="${pageDataDTOList.eventDTOList}" var="eventDTO">
 								<div class="col-md-4">
-									<div class="thumbnail border-radius-15">
+									<div class="thumbnail border-radius-15" style="height: 415px">
 										<img class="border-radius-15" alt="300x200" style="height: 195px" src=<c:out value="${eventDTO.photo}"/>>
 										<div class="caption">
 											<h3 class="text-center sub-tittle">
 												<c:out value="${eventDTO.tittle}"/>
-											</h3>
+											</h3 class="text-center">
+											<p class="text-center">
+												<c:out value="${eventDTO.description}"/>
+											</p>
 											<p>
-											<a id="modal-225779" href="#modal<c:out value="${eventDTO.id}"/>" role="button" class="btn btn-primary btn-block" data-toggle="modal">Ver Información</a>
+											<a id="modal-225779" href="#modal<c:out value="${eventDTO.id}"/>" role="button" class="btn btn-primary btn-block" style="bottom: 0" data-toggle="modal">Ver Información</a>
 											</p>
 										</div>
 									</div>
 								</div>				
 								<div class="modal fade" id="modal<c:out value="${eventDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="col-md-offset-2 col-md-8">
-										<div class="modal-content">
+									<div class="col-md-offset-3 col-md-6 border-radius-15">
+										<div class="modal-content back-ground">
 											<div class="modal-header">
 												 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 												<h4 class="modal-title" id="myModalLabel">
-													Informacion Evento
+													<h3 class=" text-center tittle"><c:out value="${eventDTO.tittle}"/></h3>
 												</h4>
 											</div>
 											<div class="modal-body">
-												<div class="thumbnail">
-													<img style="height:300px" alt="300x200" src=<c:out value="${eventDTO.photo}"/>>
-													<div class="caption">
-														<h3>
-															<c:out value="${eventDTO.tittle}"/>
-														</h3>
-														<p>
-															<c:out value="${eventDTO.description}"/>
+												<div class="thumbnail border-radius-15">
+													<img class="border-radius-15" style="height:340px" alt="300x200" src=<c:out value="${eventDTO.photo}"/>>
+													<div class="caption text-center">
+														<p class="sub-tittle">
+															<c:out value="${eventDTO.completDescription}"/>
 														</p>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="col-md-6 text-left">
+																	<h4>Lugar: <span class="modal-content"><c:out value="${eventDTO.placeTittle}"/></span></h4>
+																</div>
+																<div class="col-md-6 text-right">
+																	<h4>Fecha: <span class="modal-content"><c:out value="${eventDTO.fecha}"/></span></h4>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 											<div class="modal-footer">
-												 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="modal fade" id="modalC<c:out value="${eventDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-												<h4 class="modal-title" id="myModalLabel">
-													Informacion Evento
-												</h4>
-											</div>
-											<div class="modal-body">
-												
-											</div>
-											<div class="modal-footer">
-												 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+												 <button type="button" class="btn btn-default sub-tittle btn-lg" data-dismiss="modal">Cerrar</button>
 											</div>
 										</div>
 									</div>
@@ -154,6 +146,9 @@
 											<h3 class="text-center sub-tittle">
 												<c:out value="${placeDTO.tittle}"/>
 											</h3>
+											<p class="text-center">
+												<c:out value="${placeDTO.description}"/>
+											</p>
 											<p>
 											<a href="#modal-place<c:out value="${placeDTO.id}"/>" role="button" class="btn btn-primary btn-block" data-toggle="modal">Ver Información</a>											
 											</p>
@@ -161,45 +156,183 @@
 									</div>
 								</div>				
 								<div class="modal fade" id="modal-place<c:out value="${placeDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="col-md-offset-2 col-md-8">
-										<div class="modal-content">
+									<div class="col-md-offset-3 col-md-6 border-radius-15">
+										<div class="modal-content back-ground">
 											<div class="modal-header">
 												 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 												<h4 class="modal-title" id="myModalLabel">
-													Informacion del Lugar
+													<h3 class=" text-center tittle"><c:out value="${placeDTO.tittle}"/></h3>
 												</h4>
 											</div>
 											<div class="modal-body">
-												<div class="thumbnail">
-													<img style="height:300px" alt="300x200" src=<c:out value="${placeDTO.photo}"/>>
-													<div class="caption">
-														<h3>
-															<c:out value="${placeDTO.tittle}"/>
-														</h3>
-														<p>
-															<c:out value="${placeDTO.description}"/>
+												<div class="thumbnail border-radius-15">
+													<img class="border-radius-15" style="height:340px" alt="300x200" src=<c:out value="${placeDTO.photo}"/>>
+													<div class="caption text-center">
+														<p class="sub-tittle">
+															<c:out value="${placeDTO.completDescription}"/>
 														</p>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="col-md-12 text-center">
+																	<h4>Dirección: <span class="modal-content"><c:out value="${placeDTO.direction}"/></span> </h4>
+																	<p class="modal-content"><span class="text-center">CONTACTO</span><br>
+																	<span>${placeDTO.contact.firstName} ${placeDTO.contact.lastName}</span><br>
+																	<span>Facebook: ${placeDTO.contact.facebookId}</span><br>
+																	<span>Twitter: ${placeDTO.contact.twiterId}</span><br>
+																	<span>Mail: ${placeDTO.contact.email}</span><br>
+																	<span>Dirección: ${placeDTO.contact.address}</span><br>
+																	<span>Célular: ${placeDTO.contact.mobile}</span><br>
+																	<span>Télefono: ${placeDTO.contact.telephone}</span></p>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 											<div class="modal-footer">
-												 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+												 <button type="button" class="btn btn-default sub-tittle btn-lg" data-dismiss="modal">Cerrar</button>
 											</div>
 										</div>
 									</div>
-								</div>
+								</div>	
 							</c:forEach>
 			              	</div>
 			              </div>
 			          </div>
 			        </div>
 			      </div>
-			      <div role="tabpanel" class="tab-pane" id="Combos">...qwe</div>
+			      <div role="tabpanel" class="tab-pane" id="Combos">
+			      	<div class="row clearfix">
+			          <h2 class="text-center tittle">COMBOS</h2>
+			          <div class="col-md-12 table-bordered border-radius-15">
+			          	<div role="tabpanel col-md-12">
+					      <ul class="nav nav-tabs navbar navbar-default" role="tablist">
+					        <li role="presentation" class="active sobre-elemento"><a href="#Comida" aria-controls="home" role="tab" data-toggle="tab"><h4>Comida</h4></a></li>
+					        <li role="presentation" class="sobre-elemento"><a href="#Licores" aria-controls="profile" role="tab" data-toggle="tab"><h4>Licores</h4></a></li>
+					      </ul>
+					      <div class="tab-content">
+						      <div role="tabpanel" class="tab-pane active" id="Comida">
+							      <div class="row clearfix">
+					              	<div class="col-md-12">
+					              	<c:forEach items="${pageDataDTOList.comboDTOList}" var="comboDTO">
+				              	 	<c:if test="${comboDTO.type == 'c'}">
+										<div class="col-md-4">
+											<div class="thumbnail border-radius-15" style="height: 415px">
+												<img class="border-radius-15" alt="300x200" style="height: 195px" src=<c:out value="${comboDTO.photo}"/>>
+												<div class="caption">
+													<h3 class="text-center sub-tittle">
+														<c:out value="${comboDTO.name}"/>
+													</h3 class="text-center">
+													<p class="text-center">
+														<c:out value="${comboDTO.description}"/>
+													</p>
+													<p class="text-center">
+														Precio: $ <c:out value="${comboDTO.price}"/>
+													</p>
+													<p>
+													<a id="modal-225779" href="#modalCombo<c:out value="${comboDTO.id}"/>" role="button" class="btn btn-primary btn-block" style="bottom: 0" data-toggle="modal">Ver Información</a>
+													</p>
+												</div>
+											</div>
+										</div>				
+										<div class="modal fade" id="modalCombo<c:out value="${comboDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="col-md-offset-3 col-md-6 border-radius-15">
+												<div class="modal-content back-ground">
+													<div class="modal-header">
+														 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+														<h4 class="modal-title" id="myModalLabel">
+															<h3 class=" text-center tittle"><c:out value="${comboDTO.name}"/></h3>
+														</h4>
+													</div>
+													<div class="modal-body">
+														<h4>Productos del combo</h4>
+														<table class="table table-bordered">
+															<th>NOMBRE</th>
+															<th>DESCRIPCIÓN</th>
+															<c:forEach items="${comboDTO.productDTOList}" var="productDTO">
+																<tr>
+																	<td><c:out value="${productDTO.name}"></c:out></td>
+																	<td><c:out value="${productDTO.description}"></c:out></td>
+																</tr>
+															</c:forEach>
+														</table>
+													</div>
+													<div class="modal-footer">
+														 <button type="button" class="btn btn-default sub-tittle btn-lg" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+											</div>
+										</div>	
+									</c:if>
+									</c:forEach>
+					              	</div>
+							      </div>
+						      </div>
+						      <div role="tabpanel" class="tab-pane" id="Licores">
+							      <div class="row clearfix">
+					              	<div class="col-md-12">
+					              	<c:forEach items="${pageDataDTOList.comboDTOList}" var="comboDTO">
+				              	 	<c:if test="${comboDTO.type == 'l'}">
+										<div class="col-md-4">
+											<div class="thumbnail border-radius-15" style="height: 415px">
+												<img class="border-radius-15" alt="300x200" style="height: 195px" src=<c:out value="${comboDTO.photo}"/>>
+												<div class="caption">
+													<h3 class="text-center sub-tittle">
+														<c:out value="${comboDTO.name}"/>
+													</h3 class="text-center">
+													<p class="text-center">
+														<c:out value="${comboDTO.description}"/>
+													</p>
+													<p class="text-center">
+														Precio: $ <c:out value="${comboDTO.price}"/>
+													</p>
+													<p>
+													<a id="modal-225779" href="#modalCombo<c:out value="${comboDTO.id}"/>" role="button" class="btn btn-primary btn-block" style="bottom: 0" data-toggle="modal">Ver Información</a>
+													</p>
+												</div>
+											</div>
+										</div>				
+										<div class="modal fade" id="modalCombo<c:out value="${comboDTO.id}"/>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="col-md-offset-3 col-md-6 border-radius-15">
+												<div class="modal-content back-ground">
+													<div class="modal-header">
+														 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+														<h4 class="modal-title" id="myModalLabel">
+															<h3 class=" text-center tittle"><c:out value="${comboDTO.name}"/></h3>
+														</h4>
+													</div>
+													<div class="modal-body">
+														<h4>Productos del combo</h4>
+														<table class="table table-bordered">
+															<th>NOMBRE</th>
+															<th>DESCRIPCIÓN</th>
+															<c:forEach items="${comboDTO.productDTOList}" var="productDTO">
+																<tr>
+																	<td><c:out value="${productDTO.name}"></c:out></td>
+																	<td><c:out value="${productDTO.description}"></c:out></td>
+																</tr>
+															</c:forEach>
+														</table>
+													</div>
+													<div class="modal-footer">
+														 <button type="button" class="btn btn-default sub-tittle btn-lg" data-dismiss="modal">Cerrar</button>
+													</div>
+												</div>
+											</div>
+										</div>	
+									</c:if>
+									</c:forEach>
+					              	</div>
+							      </div>
+						      </div>
+					      </div>
+			          	</div>
+			          </div>
+			        </div>
+			        </div>
 			      <div role="tabpanel" class="tab-pane" id="settings">...rty</div>
 		      </div>
-	
 	      </div>
-
 		</div>
 	</div>
 </body>

@@ -20,9 +20,19 @@ body{
 .sub-tittle{
 	color: #555;
 }
+.modal-content{
+	color: #31688D;
+}
 .border-radius-15{
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 }
-.display-info
+.pull-bottom{
+    display: inline-block;
+    vertical-align: bottom;
+    float: none;
+}
+.back-ground{
+	background-image: url("../images/bg.jpg");
+}
